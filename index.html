@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Film Portal</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#06152e,#0b2246,#122f63);
+    color:white;
+    min-height:100vh;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+.sidebar{
+    width:260px;
+    background:rgba(0,0,0,.2);
+    backdrop-filter:blur(10px);
+    padding:25px;
+    border-right:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:30px;
+}
+
+.menu{
+    list-style:none;
+}
+
+.menu li{
+    margin-bottom:15px;
+}
+
+.menu a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:15px;
+    border-radius:14px;
+    background:rgba(255,255,255,.05);
+    transition:.3s;
+}
+
+.menu a:hover{
+    background:rgba(255,255,255,.15);
+}
+
+.content{
+    flex:1;
+    padding:30px;
+}
+
+.title{
+    font-size:34px;
+    margin-bottom:25px;
+    font-weight:700;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:20px;
+}
+
+.card{
+    text-decoration:none;
+    color:white;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
+    padding:20px;
+    transition:.3s;
+    backdrop-filter:blur(10px);
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#4ea1ff;
+    box-shadow:0 0 25px rgba(78,161,255,.25);
+}
+
+.icon{
+    width:65px;
+    height:65px;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    margin-bottom:15px;
+    background:#1b4f9c;
+}
+
+.card h3{
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#c2d3ee;
+}
+
+@media(max-width:768px){
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+        <div class="logo">🎬 Film Portal</div>
+
+        <ul class="menu">
+            <li><a href="#">🏠 Ana Sayfa</a></li>
+            <li><a href="#">🎥 Filmler</a></li>
+            <li><a href="#">📺 Diziler</a></li>
+            <li><a href="#">⚽ Spor</a></li>
+            <li><a href="#">📡 Canlı TV</a></li>
+        </ul>
+    </aside>
+
+    <main class="content">
+
+        <h1 class="title">Platformlar</h1>
+
+        <div class="cards">
+
+            <a class="card" href="https://www.netflix.com" target="_blank" rel="noopener">
+                <div class="icon">N</div>
+                <h3>Netflix</h3>
+                <p>Film ve diziler</p>
+            </a>
+
+            <a class="card" href="https://www.disneyplus.com" target="_blank" rel="noopener">
+                <div class="icon">D</div>
+                <h3>Disney+</h3>
+                <p>Disney içerikleri</p>
+            </a>
+
+            <a class="card" href="https://www.primevideo.com" target="_blank" rel="noopener">
+                <div class="icon">P</div>
+                <h3>Prime Video</h3>
+                <p>Amazon platformu</p>
+            </a>
+
+            <a class="card" href="https://www.youtube.com" target="_blank" rel="noopener">
+                <div class="icon">Y</div>
+                <h3>YouTube</h3>
+                <p>Video platformu</p>
+            </a>
+
+            <a class="card" href="https://mubi.com" target="_blank" rel="noopener">
+                <div class="icon">M</div>
+                <h3>MUBI</h3>
+                <p>Bağımsız sinema</p>
+            </a>
+
+            <a class="card" href="https://tv.apple.com" target="_blank" rel="noopener">
+                <div class="icon"></div>
+                <h3>Apple TV+</h3>
+                <p>Apple içerikleri</p>
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>
