@@ -24,12 +24,17 @@ body{
     min-height:100vh;
 }
 
+/* SIDEBAR */
 .sidebar{
     width:260px;
     background:rgba(0,0,0,.2);
     backdrop-filter:blur(10px);
     padding:25px;
     border-right:1px solid rgba(255,255,255,.08);
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
 }
 
 .logo{
@@ -60,22 +65,31 @@ body{
     background:rgba(255,255,255,.15);
 }
 
+/* CONTENT */
 .content{
     flex:1;
     padding:30px;
 }
 
-.title{
-    font-size:34px;
-    margin-bottom:25px;
+.section-title{
+    font-size:28px;
+    margin-top:30px;
+    margin-bottom:20px;
     font-weight:700;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    padding-bottom:10px;
 }
 
-/* KARTLARI KÜÇÜLTEN KISIM BURASI */
+.section-title:first-child {
+    margin-top: 0;
+}
+
+/* KÜÇÜK KARTLAR */
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); /* 300px'i 200px yaptık */
+    grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
     gap:15px;
+    margin-bottom: 40px;
 }
 
 .card{
@@ -84,9 +98,11 @@ body{
     background:rgba(255,255,255,.07);
     border:1px solid rgba(255,255,255,.08);
     border-radius:22px;
-    padding:15px; /* İç boşluk küçültüldü */
+    padding:15px;
     transition:.3s;
     backdrop-filter:blur(10px);
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover{
@@ -96,7 +112,7 @@ body{
 }
 
 .icon{
-    width:45px; /* İkon küçültüldü */
+    width:45px;
     height:45px;
     border-radius:12px;
     display:flex;
@@ -108,13 +124,14 @@ body{
 }
 
 .card h3{
-    font-size:18px; /* Başlık küçültüldü */
+    font-size:16px;
     margin-bottom:5px;
 }
 
 .card p{
     color:#c2d3ee;
-    font-size:13px; /* Açıklama küçültüldü */
+    font-size:12px;
+    margin-top: auto;
 }
 
 @media(max-width:768px){
@@ -124,6 +141,8 @@ body{
 
     .sidebar{
         width:100%;
+        height:auto;
+        position:relative;
     }
 }
 </style>
@@ -133,115 +152,225 @@ body{
 
 <div class="container">
 
+    <!-- SOL MENÜ -->
     <aside class="sidebar">
         <div class="logo">🎬 Film Portal</div>
 
         <ul class="menu">
-            <li><a href="#">🏠 Ana Sayfa</a></li>
-            <li><a href="#">🎥 Filmler</a></li>
-            <li><a href="#">📺 Diziler</a></li>
-            <li><a href="#">📻 Radyolar</a></li>
-            <li><a href="#">📡 Canlı TV</a></li>
+            <li><a href="#anasayfa">🏠 Ana Sayfa</a></li>
+            <li><a href="#canlitv">📡 Canlı TV</a></li>
+            <li><a href="#radyolar">📻 Radyolar</a></li>
+            <li><a href="#diziler">📺 Diziler</a></li>
+            <li><a href="#filmler">🎥 Filmler</a></li>
         </ul>
     </aside>
 
+    <!-- SAĞ İÇERİK -->
     <main class="content">
 
-        <h1 class="title">Platformlar</h1>
-
+        <!-- ANA SAYFA -->
+        <h2 class="section-title" id="anasayfa">🏠 Ana Sayfa & Arama Motorları</h2>
         <div class="cards">
-
-            <!-- 123MOVIES -->
-            <a class="card" href="https://ww8.123moviesfree.net/" target="_blank" rel="noopener">
-                <div class="icon">1</div>
-                <h3>123Movies</h3>
-                <p>Yabancı film ve diziler</p>
+            <a class="card" href="https://yandex.com.tr/" target="_blank" rel="noopener">
+                <div class="icon">Y</div>
+                <h3>Yandex</h3>
+                <p>Arama Motoru</p>
             </a>
-
-            <!-- HDTODAY -->
-            <a class="card" href="https://hdtoday.sx" target="_blank" rel="noopener">
-                <div class="icon">H</div>
-                <h3>HDToday</h3>
-                <p>Yabancı dizi izle</p>
+            <a class="card" href="https://www.google.com/?hl=tr" target="_blank" rel="noopener">
+                <div class="icon">G</div>
+                <h3>Google</h3>
+                <p>Arama Motoru</p>
             </a>
-
-            <!-- HDFILMCEHENNEMI -->
-            <a class="card" href="https://www.hdfilmcehennemi.nl/" target="_blank" rel="noopener">
-                <div class="icon">H</div>
-                <h3>HD Film Cehennemi</h3>
-                <p>Full HD film izle</p>
+            <a class="card" href="https://www.startpage.com/" target="_blank" rel="noopener">
+                <div class="icon">S</div>
+                <h3>Startpage</h3>
+                <p>Gizli Arama Motoru</p>
             </a>
+            <a class="card" href="https://duckduckgo.com/" target="_blank" rel="noopener">
+                <div class="icon">D</div>
+                <h3>DuckDuckGo</h3>
+                <p>Gizli Arama Motoru</p>
+            </a>
+            <a class="card" href="https://raw.githubusercontent.com/e-calender/caletv/refs/heads/main/caletv.m3u" target="_blank" rel="noopener">
+                <div class="icon">📡</div>
+                <h3>Caletv M3U</h3>
+                <p>Canlı TV Listesi</p>
+            </a>
+            <a class="card" href="https://raw.githubusercontent.com/e-calender/film_dizi/refs/heads/main/cale_film_dizi.m3u" target="_blank" rel="noopener">
+                <div class="icon">🎬</div>
+                <h3>Cale Film Dizi M3U</h3>
+                <p>Film ve Dizi Listesi</p>
+            </a>
+        </div>
 
-            <!-- FREESTREAMINGWEBSITES -->
-            <a class="card" href="https://freestreamingwebsites.xyz/" target="_blank" rel="noopener">
+        <!-- CANLI TV -->
+        <h2 class="section-title" id="canlitv">📡 Canlı TV</h2>
+        <div class="cards">
+            <a class="card" href="https://famelack.com/tv/de/" target="_blank" rel="noopener">
                 <div class="icon">F</div>
-                <h3>Free Streaming</h3>
-                <p>Ücretsiz yayın siteleri</p>
+                <h3>Famelack</h3>
+                <p>Almanya Canlı TV</p>
             </a>
-
-            <!-- DIZIPOD -->
-            <a class="card" href="https://dizipod.com/" target="_blank" rel="noopener">
-                <div class="icon">D</div>
-                <h3>DiziPod</h3>
-                <p>Dizi ve film izle</p>
-            </a>
-
-            <!-- POLIS RADYOSU -->
-            <a class="card" href="https://www.canliradyodinle.fm/polis-radyosu-tsm-dinle.html" target="_blank" rel="noopener">
-                <div class="icon">R</div>
-                <h3>Polis Radyosu</h3>
-                <p>Canlı radyo dinle</p>
-            </a>
-
-            <!-- KACKAR TV -->
-            <a class="card" href="https://www.canlitv.me/live/kackartv" target="_blank" rel="noopener">
-                <div class="icon">K</div>
-                <h3>Kaçkar TV</h3>
-                <p>Canlı TV izle</p>
-            </a>
-
-            <!-- FULL HD FILM IZLESENE -->
-            <a class="card" href="https://www.fullhdfilmizlesene.now/" target="_blank" rel="noopener">
-                <div class="icon">F</div>
-                <h3>Full HD Film</h3>
-                <p>Film izleme platformu</p>
-            </a>
-
-            <!-- DIZIBOX -->
-            <a class="card" href="https://www.dizibox.live/" target="_blank" rel="noopener">
-                <div class="icon">D</div>
-                <h3>Dizibox</h3>
-                <p>Yerli ve yabancı diziler</p>
-            </a>
-
-            <!-- DIZIPAL -->
-            <a class="card" href="https://dizipal2140.com/" target="_blank" rel="noopener">
-                <div class="icon">D</div>
-                <h3>Dizipal</h3>
-                <p>Güncel dizi izle</p>
-            </a>
-
-            <!-- DIZIYOU -->
-            <a class="card" href="https://www.diziyou.one/" target="_blank" rel="noopener">
-                <div class="icon">D</div>
-                <h3>Diziyou</h3>
-                <p>Dizi izleme sitesi</p>
-            </a>
-
-            <!-- CANLITVIZLE TV -->
-            <a class="card" href="https://m.canlitvizle.tv/" target="_blank" rel="noopener">
-                <div class="icon">T</div>
-                <h3>Canlı TV İzle</h3>
-                <p>Mobil canlı yayınlar</p>
-            </a>
-
-            <!-- ECANLITVIZLE -->
             <a class="card" href="https://www.ecanlitvizle.live/arb-kepez-az/3/" target="_blank" rel="noopener">
                 <div class="icon">E</div>
                 <h3>E-Canlı TV</h3>
-                <p>Kepez AZ canlı yayın</p>
+                <p>Kepez AZ Yayını</p>
             </a>
+            <a class="card" href="https://canlitv.com/televizyonlar" target="_blank" rel="noopener">
+                <div class="icon">C</div>
+                <h3>Canlı TV</h3>
+                <p>Televizyon Kanalları</p>
+            </a>
+            <a class="card" href="https://www.canlitv.me/live/kackartv" target="_blank" rel="noopener">
+                <div class="icon">K</div>
+                <h3>Kaçkar TV</h3>
+                <p>Canlı Yayın</p>
+            </a>
+        </div>
 
+        <!-- RADYOLAR -->
+        <h2 class="section-title" id="radyolar">📻 Radyolar</h2>
+        <div class="cards">
+            <a class="card" href="https://www.radyodinle.one/ankara-polis-radyosu-tsm" target="_blank" rel="noopener">
+                <div class="icon">📻</div>
+                <h3>Ankara Polis Radyosu</h3>
+                <p>TSM Radyo Dinle</p>
+            </a>
+            <a class="card" href="https://www.canliradyodinle.fm/polis-radyosu-tsm-dinle.html" target="_blank" rel="noopener">
+                <div class="icon">📻</div>
+                <h3>Polis Radyosu</h3>
+                <p>Canlı Radyo Dinle</p>
+            </a>
+        </div>
+
+        <!-- DİZİLER -->
+        <h2 class="section-title" id="diziler">📺 Diziler</h2>
+        <div class="cards">
+            <a class="card" href="https://ww8.123moviesfree.net/" target="_blank" rel="noopener">
+                <div class="icon">1</div>
+                <h3>123Movies</h3>
+                <p>Yabancı Dizi & Film</p>
+            </a>
+            <a class="card" href="https://diziwatch.app/dizi/planet-earth/sezon-1/bolum-1" target="_blank" rel="noopener">
+                <div class="icon">D</div>
+                <h3>DiziWatch</h3>
+                <p>Planet Earth İzle</p>
+            </a>
+            <a class="card" href="https://yabancidizi.fan/izle/margarita-sezon-1#bolum-1" target="_blank" rel="noopener">
+                <div class="icon">Y</div>
+                <h3>Yabancı Dizi</h3>
+                <p>Margarita 1. Sezon</p>
+            </a>
+            <a class="card" href="https://www.dizibox.live/" target="_blank" rel="noopener">
+                <div class="icon">D</div>
+                <h3>Dizibox</h3>
+                <p>Yerli & Yabancı Dizi</p>
+            </a>
+            <a class="card" href="https://sezonlukdizi.cc/" target="_blank" rel="noopener">
+                <div class="icon">S</div>
+                <h3>Sezonluk Dizi</h3>
+                <p>Sezonluk Dizi İzle</p>
+            </a>
+            <a class="card" href="https://dizipal2143.com/bolum/organize-isler-karun-hazinesi-1-sezon-8-bolum" target="_blank" rel="noopener">
+                <div class="icon">D</div>
+                <h3>Dizipal 2143</h3>
+                <p>Organize İşler İzle</p>
+            </a>
+            <a class="card" href="https://dizigom3.top/dizi/the-mentalist" target="_blank" rel="noopener">
+                <div class="icon">D</div>
+                <h3>Dizigom</h3>
+                <p>The Mentalist</p>
+            </a>
+            <a class="card" href="https://dizilla.now/" target="_blank" rel="noopener">
+                <div class="icon">D</div>
+                <h3>Dizilla</h3>
+                <p>Dizi İzleme Platformu</p>
+            </a>
+            <a class="card" href="https://yabancidizi.news/dizi-izle-hd" target="_blank" rel="noopener">
+                <div class="icon">Y</div>
+                <h3>Yabancı Dizi News</h3>
+                <p>HD Dizi İzle</p>
+            </a>
+            <a class="card" href="https://onlinedizi.sbs/the-cosby-show-4-sezon-24-bolum/3/" target="_blank" rel="noopener">
+                <div class="icon">O</div>
+                <h3>Online Dizi</h3>
+                <p>The Cosby Show İzle</p>
+            </a>
+            <a class="card" href="https://liderfilmizle.vip/dizi/the-cosby-show/sezon-4/bolum-3" target="_blank" rel="noopener">
+                <div class="icon">L</div>
+                <h3>Lider Film</h3>
+                <p>The Cosby Show İzle</p>
+            </a>
+            <a class="card" href="https://www.diziyou.one/" target="_blank" rel="noopener">
+                <div class="icon">D</div>
+                <h3>Diziyou</h3>
+                <p>Dizi İzle</p>
+            </a>
+            <a class="card" href="https://dizipal2144.com/" target="_blank" rel="noopener">
+                <div class="icon">D</div>
+                <h3>Dizipal 2144</h3>
+                <p>Güncel Dizi İzle</p>
+            </a>
+            <a class="card" href="https://dizipod.com/" target="_blank" rel="noopener">
+                <div class="icon">D</div>
+                <h3>DiziPod</h3>
+                <p>Podcast & Dizi</p>
+            </a>
+        </div>
+
+        <!-- FİLMLER -->
+        <h2 class="section-title" id="filmler">🎥 Filmler</h2>
+        <div class="cards">
+            <a class="card" href="https://www.fullhdfilmizlesene.now/" target="_blank" rel="noopener">
+                <div class="icon">F</div>
+                <h3>Full HD Film</h3>
+                <p>Film İzle</p>
+            </a>
+            <a class="card" href="https://www.hdfilmcehennemi.nl/" target="_blank" rel="noopener">
+                <div class="icon">H</div>
+                <h3>HD Film Cehennemi</h3>
+                <p>1080p Film İzle</p>
+            </a>
+            <a class="card" href="https://www.filmmodu.one/aktor/bruce-willis" target="_blank" rel="noopener">
+                <div class="icon">F</div>
+                <h3>Film Modu</h3>
+                <p>Bruce Willis Filmleri</p>
+            </a>
+            <a class="card" href="https://kultfilmler.net/" target="_blank" rel="noopener">
+                <div class="icon">K</div>
+                <h3>Kült Filmler</h3>
+                <p>Efsane Filmler</p>
+            </a>
+            <a class="card" href="https://filmmakinesi.to/" target="_blank" rel="noopener">
+                <div class="icon">F</div>
+                <h3>Film Makinesi</h3>
+                <p>Film İzleme Sitesi</p>
+            </a>
+            <a class="card" href="https://www.hdfilmizle.best/" target="_blank" rel="noopener">
+                <div class="icon">H</div>
+                <h3>HD Film İzle</h3>
+                <p>Yüksek Kalite Film</p>
+            </a>
+            <a class="card" href="https://jetfilmizle.app/film/ali-g-who-iz-i" target="_blank" rel="noopener">
+                <div class="icon">J</div>
+                <h3>Jet Film İzle</h3>
+                <p>Ali G Indahouse</p>
+            </a>
+            <a class="card" href="https://www.filmmodu.one/hd-populer-filmler" target="_blank" rel="noopener">
+                <div class="icon">F</div>
+                <h3>Popüler Filmler</h3>
+                <p>Film Modu HD</p>
+            </a>
+            <a class="card" href="https://webteizle.info/" target="_blank" rel="noopener">
+                <div class="icon">W</div>
+                <h3>Webte İzle</h3>
+                <p>Film & Dizi İzle</p>
+            </a>
+            <a class="card" href="https://hdtoday.sx/home" target="_blank" rel="noopener">
+                <div class="icon">H</div>
+                <h3>HDToday</h3>
+                <p>Yabancı Film İzle</p>
+            </a>
         </div>
 
     </main>
